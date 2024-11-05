@@ -1,0 +1,28 @@
+  GNU nano 4.8                                                                               nsd_sweep_config.yaml                                                                                          
+program: train_nsd.py
+method: random
+metric:
+  name: test_acc
+  goal: maximize
+parameters:
+  lr:
+    distribution: 'log_uniform_values'
+    min: 1e-5
+    max: 1e-2
+  optimizer_name:
+    values: ["AdamW"]
+  act_fn:
+    values: ["ReLU", "GELU", "Identity"]
+  base_channel_size:
+    values: [512, 768, 1024]
+  n_encoder_net_layers:
+    values: [1,2,3]
+  latent_dim:
+    value: 768
+  batch_size:
+    value: 256
+  max_epochs:
+    value: 20
+  loss_type:
+    values: ["contrastive","contrastive_2dir"]
+
